@@ -77,7 +77,7 @@ async def age(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("Введите ваш возраст цифарми")
         return AGE
     context.user_data['survey_age'] = text
-    await update.message.reply_text("Какой твой любимый город?")
+    await update.message.reply_text("В каком городе ты живешь?")
     return CITY
 
 async  def city(update: Update, context: ContextTypes.DEFAULT_TYPE):
