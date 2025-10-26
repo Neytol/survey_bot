@@ -90,7 +90,7 @@ async  def city(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     user_id = str(user.id)
     users[user_id].update({
-        "survey_name": name,
+        "first_name": name,
         "survey_age": age,
         "survey_city": city
     })
