@@ -48,7 +48,13 @@ def register_user(user_id, user_name, first_name):
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.message.from_user
-    await update.message.reply_text(f"Привет {user.first_name}, рад познакомится!") if register_user(user.id, user.username, user.first_name) else await update.message.reply_text(f"Привет {user.first_name}!")
+    users = load_user()
+    user_id = str(user.id)
+    if user_id in users:
+       await update.message.reply_text(f"Привет {users[user_id]['first_name']}!")
+    else:
+        register_user(user.id, user.username, user.first_name)
+        await update.message.reply_text(f"Привет {user.first_name}, рад познакомится!")
 
     reply_keyboard = [["Пройти опрос"]]
     await update.message.reply_text("Выберите действие:", reply_markup=ReplyKeyboardMarkup(reply_keyboard,resize_keyboard=True))
